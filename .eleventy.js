@@ -32,22 +32,6 @@ module.exports = function(eleventyConfig) {
     return Array.from(tagsSet).sort()
   })
 
-  const md = markdownIt({ html: true, linkify: true })
-  md.use(markdownItAnchor, { 
-    level: [1, 2], 
-    permalink: markdownItAnchor.permalink.headerLink({ 
-      safariReaderFix: true,
-      class: 'header-anchor',
-    })
-  })
-  eleventyConfig.setLibrary('md', md)
-
-  // creates a shortcode that allows inserting images with alt-texts. Usage {% asset_img 'imagename','alt-text' %}
-  // you can pass an optional third argument to give the image a custom path. defaults to /assets/img/posts/
-  // eleventyConfig.addShortcode('asset_img', (filename, alt, path = '/assets/img/') => 
-  // `<img class="my-4" src="${path}${filename}" alt="${alt}" />`
-  // )
-
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
@@ -64,10 +48,11 @@ module.exports = function(eleventyConfig) {
     // Pre-process *.html files with: (default: `liquid`)
     htmlTemplateEngine: "njk",
     
+    pathPrefix: "/",
     dir: {
       input: "src",
+      data: "_data",
       output: "_site"
-    },
-    passthroughFileCopy: true
+    }
   };
 }
