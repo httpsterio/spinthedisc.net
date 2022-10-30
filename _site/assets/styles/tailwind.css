@@ -890,6 +890,16 @@ html {
           text-decoration-line: underline;
 }
 
+.prose-a\:text-blue-600 :is(:where(a):not(:where([class~="not-prose"] *))) {
+  --tw-text-opacity: 1;
+  color: rgb(37 99 235 / var(--tw-text-opacity));
+}
+
+.prose-a\:underline :is(:where(a):not(:where([class~="not-prose"] *))) {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
 .hover\:prose-a\:text-red-600 :is(:where(a):not(:where([class~="not-prose"] *))):hover {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
